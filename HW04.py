@@ -43,15 +43,15 @@ for row in table:
     except IndexError:
         record['Country'] = row.xpath('.//td[1]/a[1]/text()')
     try:
-        record['Population_2022'] = row.xpath('.//td[2]/text()')[0]
+        record['Population_2022'] = int(row.xpath('.//td[2]/text()')[0].replace(",", ""))
     except IndexError:
         record['Population_2022'] = 'No'
     try:
-        record['Population_2023'] = row.xpath('.//td[3]/text()')[0]
+        record['Population_2023'] = int(row.xpath('.//td[3]/text()')[0].replace(",", ""))
     except IndexError:
         record['Population_2023'] = 'No'
     try:
-        record['Change'] = row.xpath('.//td[4]/span[2]/text()')[0]
+        record['Change'] = float(row.xpath('.//td[4]/span[2]/text()')[0].replace("%", "").replace("−", "-"))
     except IndexError:
         record['Change'] = 'No'
     try:
